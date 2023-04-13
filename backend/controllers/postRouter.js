@@ -1,0 +1,11 @@
+const express = require('express');
+const router = express.Router();
+
+router.get('/', (req,res) => {
+    res.send("main route hit")
+});
+
+
+
+module.exports = router;
+
