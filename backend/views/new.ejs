@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
     <body>
         <main>
             <div>
-                <form>
-                    <fieldset action="/post" method="post">
+                <form action="/posts" method="post" onsubmit="console.log('Submitting form...')">
+                    <fieldset>
                         <legend> Create new post</legend>
                         <label>
                             title:<input type="text" name="title" placeholder="enter title"/>
@@ -19,11 +18,13 @@
                         <label>
                             post:<input type="text" name="post" placeholder="..."/>
                         </label>
+                        <label>
+                            image:<input type="text" name="img" placeholder="img link"/>
+                        </label>
                     </fieldset>
-                    <input type="submit" value="post" />
+                    <input type="submit" value="submit" />
                 </form>
             </div>
         </main>
     </body>
-</body>
 </html>

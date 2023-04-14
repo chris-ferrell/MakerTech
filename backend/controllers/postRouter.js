@@ -1,15 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const Post = require('../models/post')
+const UserPost = require('../models/post')
 
+// post routes
 router.post('/', async (req,res) => {
-    const post = await Post.create(req.body);
-    res.redirect('/allpost')
+    console.log('Handling POST request');
+    console.log(req.body);
+    const post = await UserPost.create(req.body);
+    res.redirect('/posts')
 });
-
+// main route
 router.get('/', (req,res) => {
     res.send("main route hit")
 });
+// create new post route
 router.get('/create', (req,res) => {
     res.render('new.ejs');
 })

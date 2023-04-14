@@ -13,10 +13,12 @@ const postsSchema = new mongoose.Schema({
       required: true
     },
     image: String,
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User'
-    }
+    // user: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: 'User'
+    // }
   }, {timestamps: true});
   
-module.exports = postsSchema
+const UserPost = mongoose.model('userPost', postsSchema);
+
+module.exports = UserPost
