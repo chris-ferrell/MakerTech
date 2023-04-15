@@ -1,7 +1,7 @@
 // title
 
 const { mongoose } = require('../db/connection');
-const User = require('./user.js')
+const User = require('./User.js/index.js')
 
 const postsSchema = new mongoose.Schema({
     title: {
