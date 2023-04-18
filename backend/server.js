@@ -15,7 +15,10 @@ app.use(express.urlencoded({extended: true})) // parse urlencoded request bodies
 app.use(express.static("public")) // serve files from public statically
 
 app.get('/', (req,res) => {
-    res.send('default route hit!');
+    res.render('homepage.ejs', 
+    {
+        
+    })
 });
 
 /////////////////////////////
@@ -23,6 +26,10 @@ app.get('/', (req,res) => {
 const postController = require('./controllers/postRouter');
 console.log('Mounting postController to /posts route');
 app.use('/posts', postController);
+
+const userController = require('./controllers/userRouting');
+console.log('Mouting userController to /create route');
+app.use('/user', userController);
 
 
 app.listen(process.env.PORT, (req, res) => {

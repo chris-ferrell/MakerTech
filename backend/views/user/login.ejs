@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Form</title>
+  </head>
+  <body>
+    <h1>Login Form</h1>
+    <form action="/user/login" method="post" onsubmit="console.log('Submitting form...')">
+        <fieldset>
+            <legend> Sign in </legend>
+            <label>
+                username:<input type="text" name="username" placeholder="enter username"/>
+            </label>
+            <label>
+                password:<input type="text" name="password" placeholder="password"/>
+            </label>
+        </fieldset>
+        <input type="submit" value="submit" />
+    </form>
+  </body>
+</html>

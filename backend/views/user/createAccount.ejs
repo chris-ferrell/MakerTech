@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Account Creation Form</title>
+  </head>
+  <body>
+    <h1>Account Creation Form</h1>
+        <form action="/user/create" method="post" onsubmit="console.log('Submitting form...')">
+            <fieldset>
+                <legend> Create new account</legend>
+                <label>
+                    username:<input type="text" name="username" placeholder="enter username"/>
+                </label>
+                <label>
+                    email:<input type="text" name="email" placeholder="email"/>
+                </label>
+                <label>
+                    password:<input type="text" name="password" placeholder="password"/>
+                </label>
+            </fieldset>
+            <input type="submit" value="submit" />
+        </form>
+  </body>
+</html>
