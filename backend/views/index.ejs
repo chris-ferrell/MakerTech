@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     </head>
     <body>
         <main>
@@ -15,6 +16,12 @@
                         <h4> <%= post.title %></h4>
                         <h5><%= post.post %></h5> 
                         <img src="<%=post.image%>">
+                        <div>
+                            <a href="/edit/<%= post._id %>"><i class="fas fa-edit"></i></a>
+                            <!-- Add an edit icon with a link to edit the post -->
+                            <a href="/delete/<%= post._id %>"><i class="fas fa-trash"></i></a>
+                            <!-- Add a delete icon with a link to delete the post -->
+                        </div>
                     </article>
                 <% } %>
             </div>

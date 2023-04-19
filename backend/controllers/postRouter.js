@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const UserPost = require('../models/post')
 const Post = require('../models/post.js')
+
 // post routes
 router.post('/', async (req,res) => {
     console.log('Handling POST request');
@@ -9,6 +10,7 @@ router.post('/', async (req,res) => {
     const post = await UserPost.create(req.body);
     res.redirect('/posts')
 });
+
 // main route
 router.get('/', (req,res) => {
     res.send("main route hit")
