@@ -17,7 +17,15 @@ router.post('/create', async (req,res) => {
 router.post('/login', async (req,res) => {
     try{
         const user = await User.findOne({ username: req.body.username });
-        res.send(`${req.body.username}`)
+        // if the user cant be found
+        console.log(user)
+        if(!user){
+            return res.redirect('/user/login?error=Invalid username or password');
+        }
+        // creating a session
+        req.session.userId = user._id;
+        res.redirect('/dashboard')
+        // res.send(`${req.body.username}`)
         // if(user){
         //     // session stuff would go here
         //     res.send(`logged in as: ${req.body.username}`)
