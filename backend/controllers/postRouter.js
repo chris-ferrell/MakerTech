@@ -11,27 +11,46 @@ router.post('/', async (req,res) => {
     res.redirect('/posts')
 });
 
+router.post('/:id', async (req, res) => {
+    const deletePost = await Post.findByIdAndDelete(req.params.id);
+    res.redirect('/posts/all');
+})
+
 // main route
 router.get('/', (req,res) => {
     res.send("main route hit")
 });
 // edit route 
-router.get('/edit/:id',(req,res) => {
-    let id =req.params.id;
+router.get('/:id/edit',async (req,res) => {
+
+   const editPost = await Post.findById(req.params.id);
+
     res.render(
         'edit.ejs',
         {
 
-            userId:id
+            editPost
 
         });
 })
+//put route for edit route
+router.put('/:id', async (req, res) => {
+    const id = req.params.id;
+    const editPost = await Post.findByIdAndUpdate(id, req.body, {
+        new: true,
+    });
+    req.redirect('/posts/all');
+});
 // create new post route
 router.get('/create', (req,res) => {
     res.render('new.ejs');
 })
 
-// 
+// delete
+router.delete('/:id', async (req, res) => {
+    const deletePost = await Post.findByIdAndDelete(req.params.id);
+    res.redirect('/posts/all')
+})
 router.get('/all', async (req,res) => {
     const allpost = await Post.find({});
     res.render(

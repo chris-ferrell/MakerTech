@@ -17,10 +17,16 @@
                         <h5><%= post.post %></h5> 
                         <img src="<%=post.image%>">
                         <div>
-                            <a href="/edit/<%= post._id %>"><i class="fas fa-edit"></i></a>
-                            <!-- Add an edit icon with a link to edit the post -->
-                            <a href="/delete/<%= post._id %>"><i class="fas fa-trash"></i></a>
-                            <!-- Add a delete icon with a link to delete the post -->
+                            <!-- edit post button -->
+                            <a href="/posts/<%= post._id %>/edit"><i class="fas fa-edit"></i></a>
+                            <!-- delete post icon -->
+                            <form action="/posts/<%= post._id %>" method="POST">
+                                <!-- Use a form to send the DELETE request -->
+                                <input type="hidden" name="_method" value="DELETE">
+                                <!-- Use a hidden input field to specify the DELETE method -->
+                                <button type="submit"><i class="fas fa-trash"></i></button>
+                                <!-- Use a button to trigger the form submission -->
+                            </form>
                         </div>
                     </article>
                 <% } %>
