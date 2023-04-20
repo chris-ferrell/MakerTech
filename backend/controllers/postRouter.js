@@ -15,6 +15,17 @@ router.post('/', async (req,res) => {
 router.get('/', (req,res) => {
     res.send("main route hit")
 });
+// edit route 
+router.get('/edit/:id',(req,res) => {
+    let id =req.params.id;
+    res.render(
+        'edit.ejs',
+        {
+
+            userId:id
+
+        });
+})
 // create new post route
 router.get('/create', (req,res) => {
     res.render('new.ejs');
