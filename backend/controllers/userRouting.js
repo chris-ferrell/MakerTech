@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const createUser = require('../models/createUser');
-const User = require('../models/User');
+const User = require('../models/User.js');
 
 // const createAccount = require('../views/user/createAccount.ejs');
 // const Post = require('../models/post')
