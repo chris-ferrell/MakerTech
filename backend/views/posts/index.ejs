@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <header>
+        <%- include('../partials/nav') %>
+    </header>
+    <body>
+        <main>
+            <div>
+                <% for (post of allpost) {  %>
+                    <% console.log(post.post) %>
+                    <div class="card" style="width: 18rem; background-color: #f8f9fa; border: 1px solid #e0e0e0; margin-bottom: 1rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= post.title %></h5>
+                            <p class="card-text"><%= post.post %></p>
+                            <img src="<%=post.image%>" class="card-img-top">
+                            <div>
+                                <!-- edit post button -->
+                                <a href="/posts/<%= post._id %>/edit" class="btn btn-primary">Edit</a>
+                                <!-- delete post icon -->
+                                <form action="/posts/<%= post._id %>" method="POST">
+                                    <!-- Use a form to send the DELETE request -->
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <!-- Use a hidden input field to specify the DELETE method -->
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <!-- Use a button to trigger the form submission -->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </main>
+    </body>
+    
+    
+</html>

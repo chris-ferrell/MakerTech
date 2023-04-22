@@ -26,7 +26,7 @@ router.get('/:id/edit',async (req,res) => {
    const editPost = await Post.findById(req.params.id);
 
     res.render(
-        'edit.ejs',
+        '../views/posts/edit.ejs',
         {
 
             editPost
@@ -39,11 +39,11 @@ router.put('/:id', async (req, res) => {
     const editPost = await Post.findByIdAndUpdate(id, req.body, {
         new: true,
     });
-    req.redirect('/posts/all');
+    res.redirect('/posts/all');
 });
 // create new post route
 router.get('/create', (req,res) => {
-    res.render('new.ejs');
+    res.render('../views/posts/new.ejs');
 })
 
 // delete
@@ -54,7 +54,7 @@ router.delete('/:id', async (req, res) => {
 router.get('/all', async (req,res) => {
     const allpost = await Post.find({});
     res.render(
-        'index.ejs',
+        '../views/posts/index.ejs',
     {
         allpost
     })

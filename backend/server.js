@@ -2,40 +2,52 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
+const cors = require('cors');
 const app = express();
+
 // authentication 
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+
+const Post = require('../backend/models/post.js');
 
 app.use(
     session({
         store: MongoStore.create({
             mongoUrl:process.env.DATABASE_URL
         }),
-
+        
         secret: process.env.SECRET,
-
+        
         resave: false,
         saveUninitialzed: false,
         cookie: {
             maxAge: 1000 * 60 * 60 * 24 * 30
-
+            
         }
-
+        
     }))
-/////////////////////////////
-//////// Middleware//////////
-/////////////////////////////
+    /////////////////////////////
+    //////// Middleware//////////
+    /////////////////////////////
+app.use(cors());
+app.use(express.static('public'));
+// app.use('/public', express.static('public'));
+ // serve files from public statically
 app.set('view engine', 'ejs');
 app.use(morgan("tiny")) //logging// 
 app.use(methodOverride("_method")) // override for put and delete requests from forms
 app.use(express.urlencoded({extended: true})) // parse urlencoded request bodies
-app.use(express.static("public")) // serve files from public statically
 
-app.get('/', (req,res) => {
-    res.render('homepage.ejs', 
+const homeController = require('./controllers/homeRouter')
+app.use('/', homeController);
+
+app.get('/', async (req,res) => {
+    const allpost = await Post.find({});
+    res.render('landing.ejs', 
     {
-
+        allpost
+        
     })
 });
 

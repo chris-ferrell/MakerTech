@@ -1,0 +1,34 @@
+<!-- views/homepage.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Website</title>
+
+</head>
+<header>
+   <%- include('./partials/nav.ejs')%>
+</header>
+<body>
+  
+  <main>
+    <section id="recent-posts">
+      <h2>Recent Posts</h2>
+      <% for (let i = 0; i < allpost.length; i++) { %>
+        <article>
+          <h3><%= allpost[i].title %></h3>
+          <p><%= allpost[i].post %></p>
+          <a href="/posts/<%= allpost[i]._id %>">Read More</a>
+        </article>
+      <% } %>
+    </section>
+
+    <!-- <section id="about">
+      <h2>About MakerTech</h2>
+      <p>MakerTech is a Project Website thats a place where Makers of Tech can connect.</p>
+    </section> -->
+  </main>
+
+  
+</body>
+</html>

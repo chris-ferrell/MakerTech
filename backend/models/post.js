@@ -12,7 +12,7 @@ const postsSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    image: String,
+    // image: String,
     // user: {
     //   type: mongoose.Schema.Types.ObjectId,
     //   ref: 'User'
