@@ -3,8 +3,7 @@ const router = express.Router();
 const createUser = require('../models/createUser');
 const User = require('../models/User.js');
 
-// const createAccount = require('../views/user/createAccount.ejs');
-// const Post = require('../models/post')
+
 
 // post routes
 router.post('/create', async (req,res) => {
@@ -25,11 +24,7 @@ router.post('/login', async (req,res) => {
         // creating a session
         req.session.userId = user._id;
         res.redirect('/dashboard')
-        // res.send(`${req.body.username}`)
-        // if(user){
-        //     // session stuff would go here
-        //     res.send(`logged in as: ${req.body.username}`)
-        // }
+        
     } catch (error) {
         console.log(`ERROR CAUGHT: ${error}`)
     }
