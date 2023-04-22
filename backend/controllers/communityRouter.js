@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-router.use(express.static('public'));
+
 
 router.get('/new', (req, res) => {
     res.render('new_community.ejs');

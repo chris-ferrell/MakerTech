@@ -57,9 +57,9 @@ const postController = require('./controllers/postRouter');
 console.log('Mounting postController to /posts route');
 app.use('/posts', postController);
 
-const userController = require('./controllers/userRouting');
-console.log('Mouting userController to /create route');
-app.use('/user', userController);
+// const userController = require('./controllers/userRouting');
+// console.log('Mouting userController to /create route');
+// app.use('/user', userController);
 
 const communityController = require('./controllers/communityRouter');
 console.log('Mounting communityRouter to /community route');
